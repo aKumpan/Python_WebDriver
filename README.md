@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ```
 3.  Execute command:
 ```python
-python -m unittest src.test.WikipediaTests.WikipediaTests.search_test
+python -m unittest tests.WikipediaTests.WikipediaTests.search_test
 ```
 
 ## About
