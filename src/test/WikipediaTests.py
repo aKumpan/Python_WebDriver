@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from src.main.core.drivers.driverfactory.WebDriverFactory import WebDriverFactory
+from src.main.core.driverfactory.WebDriverFactory import WebDriverFactory
 
 
 class WikipediaTests(unittest.TestCase):
@@ -12,7 +12,7 @@ class WikipediaTests(unittest.TestCase):
         self.driver.maximize_window()  # maximizing browser window
 
     def tearDown(self):
-        self.driver.close()
+        self.driver.quit()
 
     def search_test(self):
         driver = self.driver
