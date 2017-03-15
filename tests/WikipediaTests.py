@@ -1,9 +1,7 @@
 import unittest
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
 from main.core.driverfactory.WebDriverFactory import WebDriverFactory
+from main.pages.MainPage import MainPage
 
 
 class WikipediaTests(unittest.TestCase):
@@ -15,11 +13,7 @@ class WikipediaTests(unittest.TestCase):
         self.driver.quit()
 
     def search_test(self):
-        driver = self.driver
-        driver.get("https://en.wikipedia.org/wiki/Main_Page")  # navigate to Wikipedia
-        driver.find_element_by_id("searchInput").send_keys("Software")  # typing 'Software' to search input
+        main_page = MainPage(self.driver).open()
+        article_page = main_page.search_item("Software")  # searching for 'Software'
 
-        driver.find_element_by_id("searchButton").click()  # clicking search button
-        # waiting 10 seconds for 'Computer software' to be present in 'body' tag
-        WebDriverWait(driver, 10).until(
-            EC.text_to_be_present_in_element((By.TAG_NAME, "body"), "Computer software"))
+        article_page.check_page_title("Software")  # Verifying that Article page title contains Software
