@@ -5,6 +5,42 @@
 This repository contains [Selenium Webdriver] + [Python] examples to automate Web Based applications [Wikipedia] used as example. 
 These examples are open source, released under the terms of [Apache 2.0 License].
 
+## Code examples
+1. BasePage:
+```python
+class Page(object):
+    def __init__(self, driver):
+        self.driver = driver
+        self.timeout = 30
+
+    def check_page_title(self, title):
+        WebDriverWait(self.driver, self.timeout).until(EC.title_contains(title))
+
+    def find_element(self, *locator):
+        return self.driver.find_element(*locator)
+
+    def get_title(self):
+        return self.driver.title
+
+    def get_current_url(self):
+        return self.driver.current_url
+```
+2. Simple test:
+```python
+from main.pages.MainPage import MainPage
+from tests.BaseTest import BaseTest
+
+
+class WikipediaTests(BaseTest):
+    SEARCH_TERM = "Software"
+
+    def search_test(self):
+        main_page = MainPage(self.driver).open()
+        article_page = main_page.search_for(self.SEARCH_TERM)  # searching for self.SEARCH_TERM
+
+        article_page.check_page_title(self.SEARCH_TERM)  # Verifying that Article page title contains self.SEARCH_TERM
+```
+
 ## Usage
 
 In order to use Selenium Webdriver + Python automation example, first of all install Python 3.0+ verison and pip.
