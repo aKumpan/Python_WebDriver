@@ -1,19 +1,12 @@
-import unittest
-
-from main.core.driverfactory.WebDriverFactory import WebDriverFactory
 from main.pages.MainPage import MainPage
+from tests.BaseTest import BaseTest
 
 
-class WikipediaTests(unittest.TestCase):
-    def setUp(self):
-        self.driver = WebDriverFactory.get_web_driver("chrome")
-        self.driver.maximize_window()  # maximizing browser window
-
-    def tearDown(self):
-        self.driver.quit()
+class WikipediaTests(BaseTest):
+    SEARCH_TERM = "Software"
 
     def search_test(self):
         main_page = MainPage(self.driver).open()
-        article_page = main_page.search_item("Software")  # searching for 'Software'
+        article_page = main_page.search_item(self.SEARCH_TERM)  # searching for self.SEARCH_TERM
 
-        article_page.check_page_title("Software")  # Verifying that Article page title contains Software
+        article_page.check_page_title(self.SEARCH_TERM)  # Verifying that Article page title contains self.SEARCH_TERM
