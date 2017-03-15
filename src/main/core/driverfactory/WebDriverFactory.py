@@ -1,14 +1,9 @@
-import os
-
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
-script_dir = os.path.dirname(__file__)
-
 
 class WebDriverFactory(object):
-
     @staticmethod
     def get_web_driver(browser_name):
         if browser_name == "firefox":
