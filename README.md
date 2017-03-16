@@ -65,4 +65,4 @@ Comments, questions and suggestions are always very [welcome][Selenium Webdriver
 [Download Python]: https://www.python.org/downloads/
 [Wikipedia]: https://www.wikipedia.org/
 [Anton Kumpan]: https://github.com/aKumpan
-[Selenium Webdriver + Python automation issues]: https:/
+[Selenium Webdriver + Python automation issues]: https://github.com/aKumpan/Python_WebDriver/issues
